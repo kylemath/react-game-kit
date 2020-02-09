@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+  import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { autorun } from 'mobx';
 
@@ -50,6 +50,14 @@ export default class Level extends Component {
   render() {
     return (
       <div style={this.getWrapperStyles()}>
+        <TileMap
+          style={{ top: Math.floor(-63 * this.context.scale) }}
+          src="assets/buildings.png"
+          rows={1}
+          columns={6}
+          tileSize={512}
+          layers={[[1, 2, 3, 4, 5, 6]]}
+        />      
         <TileMap
           style={{ top: Math.floor(64 * this.context.scale) }}
           src="assets/boardwalktile.png"
@@ -133,7 +141,7 @@ export default class Level extends Component {
               1,
               1,
               1,
-              1,
+              0,
               1,
               1,
               1,
@@ -156,14 +164,6 @@ export default class Level extends Component {
               1,
             ],
           ]}
-        />
-        <TileMap
-          style={{ top: Math.floor(-63 * this.context.scale) }}
-          src="assets/buildings.png"
-          rows={1}
-          columns={6}
-          tileSize={512}
-          layers={[[1, 2, 3, 4, 5, 6]]}
         />
       </div>
     );
