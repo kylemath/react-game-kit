@@ -5,3 +5,5 @@ umd
 dist
 
 .idea
+
+*.DS_Store

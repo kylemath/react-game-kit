@@ -43,7 +43,7 @@ export default class Intro extends Component {
           className="start"
           style={{ display: this.state.blink ? 'block' : 'none' }}
         >
-          Press Start
+          Welcome to Blue Pants White Pants, Press Enter to Start
         </p>
       </div>
     );

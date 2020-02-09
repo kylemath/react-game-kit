@@ -82,7 +82,7 @@ export default class Character extends Component {
             src="assets/character-sprite.png"
             scale={this.context.scale * 2}
             state={this.state.characterState}
-            steps={[9, 9, 0, 4, 5]}
+            steps={[9, 9, 0, 4, 9]}
           />
         </Body>
       </div>
@@ -102,7 +102,7 @@ export default class Character extends Component {
   jump(body) {
     this.jumpNoise.play();
     this.isJumping = true;
-    Matter.Body.applyForce(body, { x: 0, y: 0 }, { x: 0, y: -0.15 });
+    Matter.Body.applyForce(body, { x: 0, y: 0 }, { x: 0, y: -0.20 });
     Matter.Body.set(body, 'friction', 0.0001);
   };
 

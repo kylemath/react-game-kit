@@ -6,6 +6,7 @@ import { AudioPlayer, Loop, Stage, KeyListener, World } from '../../src';
 
 import Character from './character';
 import Level from './level';
+import Level1 from './level1';
 import Fade from './fade';
 
 import GameStore from './stores/game-store';
@@ -20,7 +21,7 @@ export default class Game extends Component {
       this.stopMusic = this.player.play({
         loop: true,
         offset: 1,
-        volume: 0.35,
+        volume: 0.05,
       });
     });
 
@@ -35,6 +36,8 @@ export default class Game extends Component {
       this.keyListener.SPACE,
       65,
     ]);
+
+    this.level = 1;
   }
 
   componentWillUnmount() {
@@ -43,21 +46,40 @@ export default class Game extends Component {
   }
 
   render() {
-    return (
-      <Loop>
-        <Stage style={{ background: '#3a9bdc' }}>
-          <World onInit={this.physicsInit}>
-            <Level store={GameStore} />
-            <Character
-              onEnterBuilding={this.handleEnterBuilding}
-              store={GameStore}
-              keys={this.keyListener}
-            />
-          </World>
-        </Stage>
-        <Fade visible={this.state.fade} />
-      </Loop>
-    );
+
+    if (this.level === 0) {
+      return (
+        <Loop>
+          <Stage style={{ background: '#3a9bdc' }}>
+            <World onInit={this.physicsInit}>
+              <Level store={GameStore} />
+              <Character
+                onEnterBuilding={this.handleEnterBuilding}
+                store={GameStore}
+                keys={this.keyListener}
+              />
+            </World>
+          </Stage>
+          <Fade visible={this.state.fade} />
+        </Loop>
+      );
+    } else {
+      return (
+        <Loop>
+          <Stage style={{ background: '#3a9bdc' }}>
+            <World onInit={this.physicsInit}>
+              <Level1 store={GameStore} />
+              <Character
+                onEnterBuilding={this.handleEnterBuilding}
+                store={GameStore}
+                keys={this.keyListener}
+              />
+            </World>
+          </Stage>
+          <Fade visible={this.state.fade} />
+        </Loop>
+      );     
+    }
   }
 
   physicsInit(engine) {
