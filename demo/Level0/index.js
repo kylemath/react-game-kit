@@ -6,7 +6,6 @@ import { AudioPlayer, Loop, Stage, KeyListener, World } from '../../src';
 
 import Character from './character';
 import Level from './level';
-import Level1 from './level1';
 import Fade from './fade';
 
 import GameStore from './stores/game-store';
@@ -37,7 +36,6 @@ export default class Game extends Component {
       65,
     ]);
 
-    this.level = 1;
   }
 
   componentWillUnmount() {
@@ -46,44 +44,25 @@ export default class Game extends Component {
   }
 
   render() {
-
-    if (this.level === 0) {
-      return (
-        <Loop>
-          <Stage style={{ background: '#3a9bdc' }}>
-            <World onInit={this.physicsInit}>
-              <Level store={GameStore} />
-              <Character
-                onEnterBuilding={this.handleEnterBuilding}
-                store={GameStore}
-                keys={this.keyListener}
-              />
-            </World>
-          </Stage>
-          <Fade visible={this.state.fade} />
-        </Loop>
-      );
-    } else {
-      return (
-        <Loop>
-          <Stage style={{ background: '#3a9bdc' }}>
-            <World onInit={this.physicsInit}>
-              <Level1 store={GameStore} />
-              <Character
-                onEnterBuilding={this.handleEnterBuilding}
-                store={GameStore}
-                keys={this.keyListener}
-              />
-            </World>
-          </Stage>
-          <Fade visible={this.state.fade} />
-        </Loop>
-      );     
-    }
+    return (
+      <Loop>
+        <Stage style={{ background: '#3a9bdc' }}>
+          <World onInit={this.physicsInit}>
+            <Level store={GameStore} />
+            <Character
+              onEnterBuilding={this.handleEnterBuilding}
+              store={GameStore}
+              keys={this.keyListener}
+            />
+          </World>
+        </Stage>
+        <Fade visible={this.state.fade} />
+      </Loop>
+    );
   }
 
   physicsInit(engine) {
-    const ground = Matter.Bodies.rectangle(512 * 3, 448, 1024 * 3, 64, {
+    const ground = Matter.Bodies.rectangle(512 * 3, 448, 1024 * 3, 300, {
       isStatic: true,
     });
 

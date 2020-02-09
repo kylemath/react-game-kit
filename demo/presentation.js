@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 import Intro from './intro';
-import Game from './game';
-import Slides from './slides';
+import Level0 from './Level0';
+import Level1 from './Level1';
 
 export default class Presentation extends Component {
   constructor(props) {
@@ -21,8 +21,8 @@ export default class Presentation extends Component {
   render() {
     this.gameStates = [
       <Intro onStart={this.handleStart} />,
-      <Game onLeave={this.handleLeave} />,
-      <Slides onDone={this.handleDone} index={this.state.slideIndex} />,
+      <Level0 onLeave={this.handleLeave} />,
+      <Level1 onLeave={this.handleStart} />
     ];
     return this.gameStates[this.state.gameState];
   }
@@ -39,10 +39,9 @@ export default class Presentation extends Component {
     });
   };
 
-  handleLeave(index) {
+  handleLeave() {
     this.setState({
       gameState: 2,
-      slideIndex: index,
     });
   };
 }
