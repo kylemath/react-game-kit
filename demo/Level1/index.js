@@ -20,7 +20,7 @@ export default class Game extends Component {
       this.stopMusic = this.player.play({
         loop: true,
         offset: 1,
-        volume: 0.05,
+        volume: 0.35,
       });
     });
 

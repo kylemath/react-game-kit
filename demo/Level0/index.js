@@ -16,11 +16,11 @@ export default class Game extends Component {
   };
 
   componentDidMount() {
-    this.player = new AudioPlayer('/assets/music.wav', () => {
+    this.player = new AudioPlayer('/assets/whiteBlueMusic.wav', () => {
       this.stopMusic = this.player.play({
         loop: true,
         offset: 1,
-        volume: 0.05,
+        volume: 0.35,
       });
     });
 
